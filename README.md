@@ -4,23 +4,19 @@
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
-
 Phase 1 - Basic Setup
 
-[] git init
-[] npm init
-[] npm install express pg
-[] spin up server
-[] serve index.html/scripts/css
+[x] git init
+[x] npm init
+[x] npm install express pg
+[x] spin up server
+[x] serve index.html/scripts/css
 
 Phase 2 - pool setup
 
 [] create a db/table 
-[] create pool module 
-[] require in server.js 
+[x] create pool module 
+[x] require in server.js 
 [] make GET route w/ SELECT * FROM tableName 
 [] test in browser 
 [] GET call on page load
