@@ -42,3 +42,13 @@ app.post('/tasks', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+app.delete('/tasks', (req, res) => {
+    let queryString = `DELETE FROM "tasks" where id=${req.query.id};`;
+    pool.query(queryString).then((results) => {
+        res.sendStatus(200);
+    }).catch((results) => {
+        console.log('error in DELETE');
+        res.sendStatus(500);
+    })
+})

@@ -57,5 +57,15 @@ function getTask() {
 }
 
 function deleteTask() {
-    console.log('in deleteTask');
+    console.log('in deleteTask', $(this).data('id'));
+    let taskId = $(this).data('id')
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks?id=' + taskId
+    }).then(function (response) {
+        getTask();
+    }).catch(function (err) {
+        console.log(err);
+        alert('error deleting task');
+    })
 }
