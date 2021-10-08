@@ -12,10 +12,22 @@
 
 <body>
     <h1>Claire's to-do list</h1>
-    <input type="text" placeholder="Name">
-    <input type="text" placeholder="Task">
+    <input type="text" placeholder="Task" id="taskInput"></input>
+    <input type="text" placeholder="Person Assigned" id="nameInput"></input>
     <button id="addTaskButton">add task</button>
-    <div id="addTaskOutput"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Person Assigned</th>
+                <th>Date Assigned</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="addTaskOutput">
+
+        </tbody>
+    </table>
 
 </body>
 
