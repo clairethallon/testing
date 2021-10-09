@@ -5,6 +5,7 @@ function onReady() {
     getTask();
     $(`#addTaskButton`).on('click', addTask);
     $(`#addTaskOutput`).on('click', '.deleteButton', deleteTask);
+    $(`#addTaskOutput`).on('click', '.completedButton', updateTask);
 }
 let today = new Date();
 let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -67,5 +68,19 @@ function deleteTask() {
     }).catch(function (err) {
         console.log(err);
         alert('error deleting task');
+    })
+}
+
+function updateTask() {
+    console.log('in updateTask', $(this).data('id'));
+    let taskId = $(this).data('id')
+    $.ajax({
+        method: 'PUT',
+        url: '/tasks?id=' + taskId
+    }).then(function (response) {
+        getTask();
+    }).catch(function (err) {
+        console.log(err);
+        alert('error updating task');
     })
 }

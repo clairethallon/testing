@@ -52,3 +52,13 @@ app.delete('/tasks', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+app.put('/tasks', (req, res) => {
+    let queryString = `UPDATE "tasks" SET completed='done' WHERE id=${req.query.id};`;
+    pool.query(queryString).then((results) => {
+        res.sendStatus(200);
+    }).catch((results) => {
+        console.log('error in PUT');
+        res.sendStatus(500);
+    })
+})
