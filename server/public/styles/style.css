@@ -1,12 +1,22 @@
 body{
-    background-color: beige;
+    background-color:  #534b4f;
     margin: 25px;
     padding: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+h1{
+    color: #e5ece9;
 }
 .completedButton, .deleteButton{
     height: 15px;
     width: 15px;
+}
+.th{
+    background-color: #998DA0;
+}
+tbody{
+    background-color: #B9C0DA;
 }
 
 table{
@@ -14,15 +24,21 @@ table{
     margin-top: 25px;
     padding: 10px;
     width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    
 }
 
-table, th, td {
+#addTaskOutput, .th, td {
     border: 1px solid black;
+    border-top: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
     text-align: center;
     
   }
-  .green{
-      background-color: rgb(219, 250, 215);
-  }
+
+.green{
+      background-color: #C4DACF;
+}
+

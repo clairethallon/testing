@@ -48,7 +48,7 @@ function getTask() {
                 let completed = 'done';
                 el.append(`<tr class= "green">
                 <td><input type="image" src="icons/checkedBox.png" class="completedButton" data-id="${response[i].id}"></input></td>
-            <td>${response[i].task_assigned}</td>
+                <td><strong>${response[i].task_assigned}</strong></td>
                 <td>${response[i].person_assigned}</td>
                 
                 <td>${response[i].date_assigned}</td>
@@ -61,7 +61,7 @@ function getTask() {
                 let completed = 'to do!';
                 el.append(`<tr>
                 <td><input type="image" src="icons/box.png" class="completedButton" data-id="${response[i].id}"></input></td>
-                <td>${response[i].task_assigned}</td>
+                <td><strong>${response[i].task_assigned}</strong></td>
                 <td>${response[i].person_assigned}</td>
                 <td>${response[i].date_assigned}</td>
                 <td>${completed}</td>
