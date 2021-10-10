@@ -1,12 +1,14 @@
 body{
     background-color: rgb(63, 63, 66);
     color: rgb(230, 225, 231);
+    margin: 25px;
 }
 table{
     border-collapse: collapse;
     width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-top: 25px;
+ 
+  
 }
 
 table, th, td {

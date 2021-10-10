@@ -46,8 +46,8 @@ function getTask() {
                 
                 <td>${response[i].date_assigned}</td>
                 <td>${response[i].completed}</td>
-                <td><button class="completedButton" data-id="${response[i].id}">done</button></td>
-                <td><button class="deleteButton" data-id="${response[i].id}">delete</button></td>
+                <td><button class="btn btn-outline-success completedButton" data-id="${response[i].id}">done</button></td>
+                <td><button class="btn btn-outline-danger deleteButton" data-id="${response[i].id}">delete</button></td>
             </tr>`)
         }
     }).catch(function (err) {
