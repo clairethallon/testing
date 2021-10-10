@@ -21,7 +21,7 @@ app.listen(port, () => {
 // routes
 app.get('/tasks', (req, res) => {
     console.log('/tasks GET hit');
-    const queryString = 'SELECT * FROM tasks ORDER BY completed DESC';
+    const queryString = 'SELECT * FROM tasks ORDER BY completed ASC';
     pool.query(queryString).then((results) => {
         res.send(results.rows);
     }).catch((err) => {
@@ -54,7 +54,7 @@ app.delete('/tasks', (req, res) => {
 })
 
 app.put('/tasks', (req, res) => {
-    let queryString = `UPDATE "tasks" SET completed='done' WHERE id=${req.query.id};`;
+    let queryString = `UPDATE "tasks" SET completed = NOT completed WHERE id=${req.query.id};`;
     pool.query(queryString).then((results) => {
         res.sendStatus(200);
     }).catch((results) => {

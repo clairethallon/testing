@@ -20,7 +20,7 @@ function addTask() {
         person_assigned: $(`#nameInput`).val(),
         task_assigned: $(`#taskInput`).val(),
         date_assigned: date,
-        completed: 'to do'
+        completed: false
     }
     console.log(objectToSend);
     $.ajax({
@@ -44,27 +44,28 @@ function getTask() {
         let el = $(`#addTaskOutput`);
         el.empty();
         for (let i = 0; i < response.length; i++) {
-            if (response[i].completed == 'done') {
+            if (response[i].completed == true) {
+                let completed = 'done';
                 el.append(`<tr class= "green">
+                <td><input type="image" src="icons/checkedBox.png" class="completedButton" data-id="${response[i].id}"></input></td>
             <td>${response[i].task_assigned}</td>
                 <td>${response[i].person_assigned}</td>
                 
                 <td>${response[i].date_assigned}</td>
-                <td>${response[i].completed}</td>
-                <td></td>
-                <td><button class="deleteButton" data-id="${response[i].id}">delete</button></td>
+                <td>${completed}</td>
+                
+                <td><input type="image" src="icons/trash.png"class="deleteButton" data-id="${response[i].id}"></input></td>
             </tr>`)
             }
             else {
-
+                let completed = 'to do!';
                 el.append(`<tr>
-            <td>${response[i].task_assigned}</td>
+                <td><input type="image" src="icons/box.png" class="completedButton" data-id="${response[i].id}"></input></td>
+                <td>${response[i].task_assigned}</td>
                 <td>${response[i].person_assigned}</td>
-                
                 <td>${response[i].date_assigned}</td>
-                <td>${response[i].completed}</td>
-                <td><button class="completedButton" data-id="${response[i].id}">done</button></td>
-                <td><button class="deleteButton" data-id="${response[i].id}">delete</button></td>
+                <td>${completed}</td>
+                <td><input type="image" src="icons/trash.png"class="deleteButton" data-id="${response[i].id}"></input></td>
             </tr>`)
             }
         }
