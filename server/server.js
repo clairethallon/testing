@@ -21,7 +21,7 @@ app.listen(port, () => {
 // routes
 app.get('/tasks', (req, res) => {
     console.log('/tasks GET hit');
-    const queryString = 'SELECT * FROM tasks';
+    const queryString = 'SELECT * FROM tasks ORDER BY completed DESC';
     pool.query(queryString).then((results) => {
         res.send(results.rows);
     }).catch((err) => {

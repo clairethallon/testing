@@ -1,14 +1,20 @@
 body{
     background-color: beige;
+    margin: 25px;
+    padding: 10px;
 }
 table{
     border-collapse: collapse;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-top: 25px;
+    padding: 10px;
+    width: 90%;
 }
 
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px;
+  }
+  .green{
+      background-color: rgb(219, 250, 215);
   }
