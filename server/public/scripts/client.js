@@ -37,6 +37,8 @@ function addTask() {
 
 function getTask() {
     console.log('in getTask');
+    $(`#nameInput`).val('');
+    $(`#taskInput`).val('');
     $.ajax({
         method: 'GET',
         url: '/tasks'
