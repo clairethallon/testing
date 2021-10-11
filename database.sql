@@ -3,5 +3,5 @@ CREATE TABLE "tasks"(
 	person_assigned text, 
 	task_assigned text,
 	date_assigned text,
-	completed text
+	completed boolean
 	);

@@ -31,8 +31,8 @@ Phase 3 - interface/POST
 Phase 4 - delete
 
 [x] display messages on DOM 
-[] add a "delete" button with data-id tag 
-[] test clieck handler with $( this ).data( 'id' ) 
-[] send DELETE req w/ ID 
-[] delete message from db 
-[] repeat for PUT 
+[x] add a "delete" button with data-id tag 
+[x] test clieck handler with $( this ).data( 'id' ) 
+[x] send DELETE req w/ ID 
+[x] delete message from db 
+[x] repeat for PUT 
