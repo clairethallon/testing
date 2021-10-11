@@ -78,21 +78,32 @@ function getTask() {
 
 function deleteTask() {
     console.log('in deleteTask', $(this).data('id'));
-    if (confirm('Would you like to delete?') == true) {
-        let taskId = $(this).data('id')
-        $.ajax({
-            method: 'DELETE',
-            url: '/tasks?id=' + taskId
-        }).then(function (response) {
-            getTask();
-        }).catch(function (err) {
-            console.log(err);
-            alert('error deleting task');
-        })
-    }
-    else {
-        return
-    }
+    swal({
+        title: "Are you sure you want to delete?",
+        text: "Once deleted, you will not be able to recover this imaginary task!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+            })
+            let taskId = $(this).data('id')
+            $.ajax({
+                method: 'DELETE',
+                url: '/tasks?id=' + taskId
+            }).then(function (response) {
+                getTask();
+            }).catch(function (err) {
+                console.log(err);
+                alert('error deleting task');
+            });
+        } else {
+            swal("Your imaginary task is safe!");
+        }
+    });
+
 }
 
 function updateTask() {
