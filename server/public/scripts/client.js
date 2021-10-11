@@ -13,7 +13,7 @@ let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getD
 function addTask() {
     console.log('in addTask');
     if ($(`#nameInput`).val() === '' || $(`#taskInput`).val() === '') {
-        alert('please enter all fields');
+        swal('please enter all fields!');
         return;
     };
     let objectToSend = {
@@ -88,7 +88,7 @@ function deleteTask() {
         dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
-            swal("Poof! Your imaginary file has been deleted!", {
+            swal("Poof! Your imaginary task has been deleted!", {
                 icon: "success",
             })
             let taskId = $(this).data('id')
