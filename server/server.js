@@ -44,6 +44,7 @@ app.post('/tasks', (req, res) => {
 })
 
 app.delete('/tasks', (req, res) => {
+    // delete row with imported id
     let queryString = `DELETE FROM "tasks" where id=${req.query.id};`;
     pool.query(queryString).then((results) => {
         res.sendStatus(200);
@@ -54,6 +55,7 @@ app.delete('/tasks', (req, res) => {
 })
 
 app.put('/tasks', (req, res) => {
+    // toggle completed boolean in database
     let queryString = `UPDATE "tasks" SET completed = NOT completed WHERE id=${req.query.id};`;
     pool.query(queryString).then((results) => {
         res.sendStatus(200);

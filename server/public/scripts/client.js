@@ -4,18 +4,24 @@ function onReady() {
     console.log('JQ');
     getTask();
     $(`#addTaskButton`).on('click', addTask);
-    $(`#addTaskOutput`).on('click', '.deleteButton', deleteTask);
-    $(`#addTaskOutput`).on('click', '.completedButton', updateTask);
+    $(`#addTaskOutput`).on('click', '.deleteB', deleteTask);
+    $(`#addTaskOutput`).on('click', '.completedB', updateTask);
 }
+//creates new date so we can keep track of when tasks were added to database
 let today = new Date();
 let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
 function addTask() {
+    // log function hit
     console.log('in addTask');
+
+    //if input fields are blank send alert and end function
     if ($(`#nameInput`).val() === '' || $(`#taskInput`).val() === '') {
         swal('please enter all fields!');
         return;
     };
+
+    //create object to send using input data/send using ajax call
     let objectToSend = {
         person_assigned: $(`#nameInput`).val(),
         task_assigned: $(`#taskInput`).val(),
@@ -43,31 +49,35 @@ function getTask() {
         method: 'GET',
         url: '/tasks'
     }).then(function (response) {
+        // empty html div
         let el = $(`#addTaskOutput`);
         el.empty();
+        // oop through to update dom
         for (let i = 0; i < response.length; i++) {
             if (response[i].completed == true) {
+                // for if the task has been marked as completed
                 let completed = 'done';
                 el.append(`<tr class= "green">
-                <td><input type="image" src="icons/checkedBox.png" class="completedButton" data-id="${response[i].id}"></input></td>
+                <td><button class="btn btn-outline-success btn-sm completedB" data-id="${response[i].id}">✓</button></td>
                 <td><strong>${response[i].task_assigned}</strong></td>
                 <td>${response[i].person_assigned}</td>
                 
                 <td>${response[i].date_assigned}</td>
                 <td>${completed}</td>
                 
-                <td><input type="image" src="icons/trash.png"class="deleteButton" data-id="${response[i].id}"></input></td>
+                <td><button type="button" class="btn btn-outline-danger btn-sm deleteB" data-id="${response[i].id}">delete</button></td>
             </tr>`)
             }
+            // for if task has not yet been completed
             else {
                 let completed = 'to do!';
                 el.append(`<tr>
-                <td><input type="image" src="icons/box.png" class="completedButton" data-id="${response[i].id}"></input></td>
+                <td><button class="btn btn-outline-primary btn-sm completedB" data-id="${response[i].id}">☐</button></td>
                 <td><strong>${response[i].task_assigned}</strong></td>
                 <td>${response[i].person_assigned}</td>
                 <td>${response[i].date_assigned}</td>
                 <td>${completed}</td>
-                <td><input type="image" src="icons/trash.png"class="deleteButton" data-id="${response[i].id}"></input></td>
+                <td><button type="button" class="btn btn-outline-danger btn-sm deleteB" data-id="${response[i].id}">delete</button></td>
             </tr>`)
             }
         }
@@ -79,6 +89,7 @@ function getTask() {
 }
 
 function deleteTask() {
+    // log function hit
     console.log('in deleteTask', $(this).data('id'));
     swal({
         title: "Are you sure you want to delete?",
@@ -109,7 +120,9 @@ function deleteTask() {
 }
 
 function updateTask() {
+    // log function hit
     console.log('in updateTask', $(this).data('id'));
+    // get click data for ajax call
     let taskId = $(this).data('id')
     $.ajax({
         method: 'PUT',
