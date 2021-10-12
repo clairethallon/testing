@@ -55,8 +55,16 @@ app.delete('/tasks', (req, res) => {
 })
 
 app.put('/tasks', (req, res) => {
+<<<<<<< HEAD
     // toggle completed boolean in database
     let queryString = `UPDATE "tasks" SET completed = NOT completed WHERE id=${req.query.id};`;
+=======
+    let date = new Date().toISOString();
+    let currentdate = (date.substring(0, 10));
+    console.log(currentdate);
+    let queryString = `UPDATE "tasks" SET date_assigned ='${currentdate}' WHERE id=${req.query.id};
+    UPDATE "tasks" SET completed = NOT completed WHERE id=${req.query.id};`;
+>>>>>>> feature-time-completed
     pool.query(queryString).then((results) => {
         res.sendStatus(200);
     }).catch((results) => {

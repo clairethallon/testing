@@ -62,7 +62,7 @@ function getTask() {
                 <td><strong>${response[i].task_assigned}</strong></td>
                 <td>${response[i].person_assigned}</td>
                 
-                <td>${response[i].date_assigned}</td>
+                <td>task completed: ${date}</td>
                 <td>${completed}</td>
                 
                 <td><button type="button" class="btn btn-outline-danger btn-sm deleteB" data-id="${response[i].id}">delete</button></td>
@@ -126,7 +126,7 @@ function updateTask() {
     let taskId = $(this).data('id')
     $.ajax({
         method: 'PUT',
-        url: '/tasks?id=' + taskId
+        url: '/tasks?id=' + taskId,
     }).then(function (response) {
         getTask();
     }).catch(function (err) {
